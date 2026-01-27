@@ -1,0 +1,67 @@
+/* Import Bootstrap */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'ngx-toastr/toastr';
+
+/* Custom styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: none;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  border-top: none;
+}
+
+.btn-group-sm > .btn {
+  padding: 0.25rem 0.5rem;
+}
+
+.badge {
+  font-size: 0.85em;
+  padding: 0.4em 0.8em;
+}
+
+.spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Form validation */
+.ng-invalid.ng-touched:not(form) {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

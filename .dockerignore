@@ -1,0 +1,9 @@
+src/test
+.git
+.gitignore
+README.md
+*.iml
+.idea
+.DS_Store
+.env
+../docker-compose.yml

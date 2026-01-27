@@ -1,0 +1,164 @@
+.container {
+  max-width: 1200px;
+}
+
+.table {
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.table thead th {
+  border-bottom: 2px solid #dee2e6;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+  padding: 1rem;
+}
+
+.table tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-top: 1px solid #f0f0f0;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.5em 0.75em;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
+  color: #000;
+}
+
+.bg-info {
+  background-color: #0dcaf0 !important;
+  color: #000;
+}
+
+.bg-primary {
+  background-color: #0d6efd !important;
+  color: #fff;
+}
+
+.bg-success {
+  background-color: #198754 !important;
+  color: #fff;
+}
+
+.bg-danger {
+  background-color: #dc3545 !important;
+  color: #fff;
+}
+
+.bg-secondary {
+  background-color: #6c757d !important;
+  color: #fff;
+}
+
+.btn-group-sm > .btn {
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.btn-outline-primary {
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-outline-success {
+  border-color: #198754;
+  color: #198754;
+}
+
+.btn-outline-success:hover {
+  background-color: #198754;
+  color: white;
+}
+
+.btn-outline-info {
+  border-color: #0dcaf0;
+  color: #0dcaf0;
+}
+
+.btn-outline-info:hover {
+  background-color: #0dcaf0;
+  color: #000;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination {
+  margin-top: 2rem;
+}
+
+.page-link {
+  color: #0d6efd;
+  border: 1px solid #dee2e6;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.page-link:hover {
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: white;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+}
+
+.alert {
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.alert-info {
+  background-color: #e7f1ff;
+  color: #084298;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.25rem;
+}

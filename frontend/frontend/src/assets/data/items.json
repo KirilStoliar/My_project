@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop Pro",
+    "price": 999.99
+  },
+  {
+    "id": 2,
+    "name": "Smartphone",
+    "price": 699.99
+  },
+  {
+    "id": 3,
+    "name": "Tablet",
+    "price": 499.99
+  },
+  {
+    "id": 4,
+    "name": "Smart Watch",
+    "price": 299.99
+  },
+  {
+    "id": 5,
+    "name": "Wireless Headphones",
+    "price": 199.99
+  },
+  {
+    "id": 6,
+    "name": "Gaming Console",
+    "price": 399.99
+  },
+  {
+    "id": 7,
+    "name": "Bluetooth Speaker",
+    "price": 89.99
+  },
+  {
+    "id": 8,
+    "name": "Monitor",
+    "price": 249.99
+  },
+  {
+    "id": 9,
+    "name": "Keyboard",
+    "price": 79.99
+  },
+  {
+    "id": 10,
+    "name": "Mouse",
+    "price": 49.99
+  }
+]
