@@ -35,7 +35,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: surname
+                  name: surename
                   type: varchar(255)
                   constraints:
                     nullable: false
@@ -75,7 +75,7 @@ databaseChangeLog:
                   name: name
                   value: Admin
               - column:
-                  name: surname
+                  name: surename
                   value: User
               - column:
                   name: birth_date

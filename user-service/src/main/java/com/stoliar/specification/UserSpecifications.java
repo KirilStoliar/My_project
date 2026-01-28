@@ -18,14 +18,14 @@ public class UserSpecifications {
         };
     }
 
-    public static Specification<User> hasSurname(String surname) {
+    public static Specification<User> hasSurename(String surename) {
         return (root, query, criteriaBuilder) -> {
-            if (!StringUtils.hasText(surname)) {
+            if (!StringUtils.hasText(surename)) {
                 return criteriaBuilder.conjunction(); // пустое условие
             }
             return criteriaBuilder.like(
-                criteriaBuilder.lower(root.get("surname")),
-                "%" + surname.toLowerCase() + "%"
+                criteriaBuilder.lower(root.get("surename")),
+                "%" + surename.toLowerCase() + "%"
             );
         };
     }

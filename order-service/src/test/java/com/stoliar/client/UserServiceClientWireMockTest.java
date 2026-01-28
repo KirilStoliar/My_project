@@ -66,7 +66,7 @@ class UserServiceClientWireMockTest {
                     "id": 1,
                     "email": "test@example.com",
                     "name": "Test",
-                    "surname": "User",
+                    "surename": "User",
                     "active": true
                   }
                 }

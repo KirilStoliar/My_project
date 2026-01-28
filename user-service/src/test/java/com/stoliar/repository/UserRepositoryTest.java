@@ -41,7 +41,7 @@ class UserRepositoryTest extends AbstractJpaTest {
         assertNotNull(createdUser);
         assertNotNull(createdUser.getId());
         assertEquals("John", createdUser.getName());
-        assertEquals("Doe", createdUser.getSurname());
+        assertEquals("Doe", createdUser.getSurename());
         assertTrue(createdUser.getActive());
         assertNotNull(createdUser.getCreatedAt());
 
@@ -66,7 +66,7 @@ class UserRepositoryTest extends AbstractJpaTest {
         // When
         User managedUser = userRepository.findUserById(user.getId());
         managedUser.setName("Jane");
-        managedUser.setSurname("Smith");
+        managedUser.setSurename("Smith");
         managedUser.setEmail("jane.smith" + UUID.randomUUID() + "@example.com");
         userRepository.save(managedUser);
         entityManager.flush();
@@ -75,7 +75,7 @@ class UserRepositoryTest extends AbstractJpaTest {
         // Then - Проверяем в БД
         User dbUser = userRepository.findUserById(user.getId());
         assertEquals("Jane", dbUser.getName());
-        assertEquals("Smith", dbUser.getSurname());
+        assertEquals("Smith", dbUser.getSurename());
     }
 
     @Test

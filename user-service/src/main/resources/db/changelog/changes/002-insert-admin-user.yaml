@@ -10,5 +10,5 @@ databaseChangeLog:
       changes:
         - sql:
             sql: >
-              INSERT INTO users (name, surname, birth_date, email, active, created_at, updated_at)
+              INSERT INTO users (name, surename, birth_date, email, active, created_at, updated_at)
               VALUES ('Admin', 'User', '1980-01-01', 'admin@example.com', true, NOW(), NOW())

@@ -24,17 +24,17 @@
               </div>
 
               <div class="col-md-6 mb-3">
-                <label for="surname" class="form-label">Last Name</label>
+                <label for="surename" class="form-label">Last Name</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="surname"
-                  formControlName="surname"
-                  [class.is-invalid]="submitted && f['surname'].errors"
+                  id="surename"
+                  formControlName="surename"
+                  [class.is-invalid]="submitted && f['surename'].errors"
                   placeholder="Enter your last name">
-                <div *ngIf="submitted && f['surname'].errors" class="invalid-feedback">
-                  <div *ngIf="f['surname'].errors['required']">Last name is required</div>
-                  <div *ngIf="f['surname'].errors['minlength']">Last name must be at least 2 characters</div>
+                <div *ngIf="submitted && f['surename'].errors" class="invalid-feedback">
+                  <div *ngIf="f['surename'].errors['required']">Last name is required</div>
+                  <div *ngIf="f['surename'].errors['minlength']">Last name must be at least 2 characters</div>
                 </div>
               </div>
             </div>

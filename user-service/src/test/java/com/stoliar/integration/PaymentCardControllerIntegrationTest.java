@@ -51,7 +51,7 @@ class PaymentCardControllerIntegrationTest extends AbstractIntegrationTest {
         // Given - подготовка тестовых данных
         testUser = new User();
         testUser.setName("Card");
-        testUser.setSurname("Test");
+        testUser.setSurename("Test");
         testUser.setBirthDate(LocalDate.of(1990, 1, 1));
         testUser.setEmail("card.test@example.com");
         testUser.setActive(true);

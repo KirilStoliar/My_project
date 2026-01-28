@@ -75,7 +75,7 @@ public class AuthServiceImpl implements AuthService {
         credentials.setRole(requestedRole);
         credentials.setActive(true);
         credentials.setName(request.getName());
-        credentials.setSurname(request.getSurname());
+        credentials.setSurename(request.getSurename());
         credentials.setBirthDate(request.getBirthDate());
 
         UserCredentials savedCredentials = userCredentialsRepository.save(credentials);
@@ -87,7 +87,7 @@ public class AuthServiceImpl implements AuthService {
             userCreateRequest.setEmail(request.getEmail());
             userCreateRequest.setRole(requestedRole);
             userCreateRequest.setName(request.getName());
-            userCreateRequest.setSurname(request.getSurname());
+            userCreateRequest.setSurename(request.getSurename());
             userCreateRequest.setBirthDate(request.getBirthDate());
 
             UserResponse userResponse = userServiceClient.createUser(userCreateRequest, adminToken);

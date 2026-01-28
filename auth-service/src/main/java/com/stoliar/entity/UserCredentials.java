@@ -50,7 +50,7 @@ public class UserCredentials {
     private String name;
 
     @Column(nullable = false)
-    private String surname;
+    private String surename;
 
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;

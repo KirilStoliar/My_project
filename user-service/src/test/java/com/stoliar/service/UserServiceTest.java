@@ -44,14 +44,14 @@ class UserServiceTest {
         // Given
         UserCreateDTO createDTO = new UserCreateDTO();
         createDTO.setName("John");
-        createDTO.setSurname("Doe");
+        createDTO.setSurename("Doe");
         createDTO.setBirthDate(LocalDate.of(1990, 1, 1));
         createDTO.setEmail("john.doe@example.com");
 
         User user = new User();
         user.setId(1L);
         user.setName("John");
-        user.setSurname("Doe");
+        user.setSurename("Doe");
         user.setEmail("john.doe@example.com");
 
         UserDTO expectedDTO = new UserDTO();
@@ -97,20 +97,20 @@ class UserServiceTest {
         Long userId = 1L;
         UserDTO updateDTO = new UserDTO();
         updateDTO.setName("Jane");
-        updateDTO.setSurname("Smith");
+        updateDTO.setSurename("Smith");
         updateDTO.setBirthDate(LocalDate.of(1995, 1, 1));
         updateDTO.setEmail("jane.smith@example.com");
 
         User existingUser = new User();
         existingUser.setId(userId);
         existingUser.setName("John");
-        existingUser.setSurname("Doe");
+        existingUser.setSurename("Doe");
         existingUser.setEmail("john.doe@example.com");
 
         User updatedUser = new User();
         updatedUser.setId(userId);
         updatedUser.setName("Jane");
-        updatedUser.setSurname("Smith");
+        updatedUser.setSurename("Smith");
         updatedUser.setEmail("jane.smith@example.com");
 
         UserDTO expectedDTO = new UserDTO();
@@ -207,7 +207,7 @@ class UserServiceTest {
         // Given
         Pageable pageable = PageRequest.of(0, 10);
         String firstName = "John";
-        String surname = "Doe";
+        String surename = "Doe";
 
         User user = new User();
         user.setId(1L);
@@ -220,7 +220,7 @@ class UserServiceTest {
         when(userMapper.toDTO(user)).thenReturn(userDTO);
 
         // When
-        Page<UserDTO> result = userService.getUsersWithFilters(firstName, surname, pageable);
+        Page<UserDTO> result = userService.getUsersWithFilters(firstName, surename, pageable);
 
         // Then
         assertNotNull(result);

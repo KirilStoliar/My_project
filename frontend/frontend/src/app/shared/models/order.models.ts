@@ -16,7 +16,7 @@ export interface Order {
   orderItems: OrderItem[];
   userInfo?: {
     name: string;
-    surname: string;
+    surename: string;
     email: string;
   };
 }

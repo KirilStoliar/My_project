@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
         // Используем нативный запрос с RETURNING
         User createdUser = userRepository.createUser(
                 userCreateDTO.getName(),
-                userCreateDTO.getSurname(),
+                userCreateDTO.getSurename(),
                 userCreateDTO.getBirthDate(),
                 userCreateDTO.getEmail()
         );
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
         }
 
         existingUser.setName(userDTO.getName());
-        existingUser.setSurname(userDTO.getSurname());
+        existingUser.setSurename(userDTO.getSurename());
         existingUser.setBirthDate(userDTO.getBirthDate());
         existingUser.setEmail(userDTO.getEmail());
 
@@ -126,11 +126,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public Page<UserDTO> getUsersWithFilters(String firstName, String surname, Pageable pageable) {
-        log.info("Fetching users with filters - firstName: {}, surname: {}", firstName, surname);
+    public Page<UserDTO> getUsersWithFilters(String firstName, String surename, Pageable pageable) {
+        log.info("Fetching users with filters - firstName: {}, surename: {}", firstName, surename);
 
         Specification<User> spec = UserSpecifications.hasFirstName(firstName)
-                .and(UserSpecifications.hasSurname(surname));
+                .and(UserSpecifications.hasSurename(surename));
 
         return userRepository.findAll(spec, pageable).map(userMapper::toDTO);
     }

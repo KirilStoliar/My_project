@@ -225,7 +225,7 @@ class PaymentCardRepositoryTest extends AbstractJpaTest {
     private User createTestUser() {
         User user = new User();
         user.setName("Test");
-        user.setSurname("User");
+        user.setSurename("User");
         user.setBirthDate(LocalDate.of(1990, 1, 1));
         user.setEmail("test" + UUID.randomUUID() + "@example.com");
         user.setActive(true);

@@ -1,0 +1,179 @@
+<div class="min-h-dvh flex items-center justify-center bg-slate-50 px-4">
+    <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+      <div class="mb-6">
+        <h1 class="text-2xl font-semibold tracking-tight text-slate-900">
+          {{ title() }}
+        </h1>
+        <p class="mt-1 text-sm text-slate-600">
+          @if (mode() === 'login') {
+            Use your account to continue
+          } @else {
+            Create user (ADMIN only)
+          }
+        </p>
+      </div>
+  
+      @if (errorText()) {
+        <div class="mb-4 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">
+          {{ errorText() }}
+        </div>
+      }
+  
+      @if (mode() === 'login') {
+        <!-- LOGIN -->
+        <form [formGroup]="loginForm" (ngSubmit)="submitLogin()" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Email</label>
+            <input
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+              placeholder="admin@example.com"
+            />
+            @if (loginForm.controls.email.touched && loginForm.controls.email.invalid) {
+              <p class="mt-1 text-xs text-rose-600">Введите корректный email</p>
+            }
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Password</label>
+            <input
+              type="password"
+              formControlName="password"
+              autocomplete="current-password"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+              placeholder="••••••••"
+            />
+            @if (loginForm.controls.password.touched && loginForm.controls.password.invalid) {
+              <p class="mt-1 text-xs text-rose-600">Пароль минимум 6 символов</p>
+            }
+          </div>
+  
+          <button
+            type="submit"
+            [disabled]="loginForm.invalid || isSubmitting()"
+            class="w-full rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {{ isSubmitting() ? 'Signing in...' : 'Sign in' }}
+          </button>
+        </form>
+      } @else {
+        <!-- REGISTER (ADMIN) -->
+        <form [formGroup]="registerForm" (ngSubmit)="submitRegister()" class="space-y-4">
+          <div class="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+            Доступно только для ADMIN (эндпоинт /auth/register защищён на бэкенде).
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Email</label>
+            <input
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+              placeholder="user@example.com"
+            />
+            @if (registerForm.controls.email.touched && registerForm.controls.email.invalid) {
+              <p class="mt-1 text-xs text-rose-600">Введите корректный email</p>
+            }
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Password</label>
+            <input
+              type="password"
+              formControlName="password"
+              autocomplete="new-password"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+              placeholder="password"
+            />
+            @if (registerForm.controls.password.touched && registerForm.controls.password.invalid) {
+              <p class="mt-1 text-xs text-rose-600">Пароль минимум 6 символов</p>
+            }
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              autocomplete="given-name"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+              placeholder="John"
+            />
+            @if (registerForm.controls.name.touched && registerForm.controls.name.invalid) {
+              <p class="mt-1 text-xs text-rose-600">Обязательное поле</p>
+            }
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Surename</label>
+            <input
+              type="text"
+              formControlName="surename"
+              autocomplete="family-name"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+              placeholder="Doe"
+            />
+            @if (registerForm.controls.surename.touched && registerForm.controls.surename.invalid) {
+              <p class="mt-1 text-xs text-rose-600">Обязательное поле</p>
+            }
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Birth date</label>
+            <input
+              type="date"
+              formControlName="birthDate"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+            />
+            @if (registerForm.controls.birthDate.touched && registerForm.controls.birthDate.invalid) {
+              <p class="mt-1 text-xs text-rose-600">Обязательное поле</p>
+            }
+          </div>
+  
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Role</label>
+            <select
+              formControlName="role"
+              class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-900 focus:ring-2 focus:ring-slate-900/10"
+            >
+              <option value="USER">USER</option>
+              <option value="ADMIN">ADMIN</option>
+            </select>
+          </div>
+  
+          <button
+            type="submit"
+            [disabled]="registerForm.invalid || isSubmitting()"
+            class="w-full rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {{ isSubmitting() ? 'Creating...' : 'Create user' }}
+          </button>
+        </form>
+      }
+  
+      <div class="mt-6 text-center">
+        @if (mode() === 'login') {
+          <button
+            type="button"
+            (click)="toggleMode()"
+            [disabled]="isSubmitting()"
+            class="text-sm font-medium text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Create user (ADMIN)
+          </button>
+        } @else {
+          <button
+            type="button"
+            (click)="toggleMode()"
+            [disabled]="isSubmitting()"
+            class="text-sm font-medium text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Back to login
+          </button>
+        }
+      </div>
+    </div>
+  </div>

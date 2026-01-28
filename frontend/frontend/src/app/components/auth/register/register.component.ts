@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   ) {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
-      surname: ['', [Validators.required, Validators.minLength(2)]],
+      surename: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
 
     const userData = {
       name: this.f['name'].value,
-      surname: this.f['surname'].value,
+      surename: this.f['surename'].value,
       email: this.f['email'].value,
       password: this.f['password'].value,
       birthDate: this.f['birthDate'].value,

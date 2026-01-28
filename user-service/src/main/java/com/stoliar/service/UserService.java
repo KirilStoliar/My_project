@@ -12,5 +12,5 @@ public interface UserService {
     UserDTO updateUser(Long id, UserDTO userDTO);
     UserDTO updateUserStatus(Long id, boolean active);
     void deleteUser(Long id);
-    Page<UserDTO> getUsersWithFilters(String firstName, String surname, Pageable pageable);
+    Page<UserDTO> getUsersWithFilters(String firstName, String surename, Pageable pageable);
 }
