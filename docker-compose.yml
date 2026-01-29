@@ -19,7 +19,13 @@ services:
       - innowise-network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8083/api/admin-token/status || exit 1" ]
+      test:
+        [
+          "CMD",
+          "curl",
+          "-f",
+          "http://localhost:8083/api/admin-token/status || exit 1",
+        ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -141,7 +147,7 @@ services:
       - innowise-network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -162,7 +168,7 @@ services:
       - innowise-network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -183,7 +189,7 @@ services:
       - innowise-network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -204,7 +210,7 @@ services:
       - innowise-network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -233,7 +239,7 @@ services:
       - innowise-network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "echo", "ruok", "|", "nc", "localhost", "2181" ]
+      test: ["CMD", "echo", "ruok", "|", "nc", "localhost", "2181"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -262,7 +268,14 @@ services:
       - innowise-network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "kafka-topics", "--list", "--bootstrap-server", "localhost:9092" ]
+      test:
+        [
+          "CMD",
+          "kafka-topics",
+          "--list",
+          "--bootstrap-server",
+          "localhost:9092",
+        ]
       interval: 10s
       timeout: 10s
       retries: 10
@@ -283,17 +296,20 @@ services:
       - innowise-network
     restart: unless-stopped
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "${FRONTEND_PORT}:80"
-  #   depends_on:
-  #     - api-gateway
-  #   networks:
-  #     - innowise-network
-  #   restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend/ui
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: ui
+        BUILD_CONFIGURATION: production
+    ports:
+      - "${FRONTEND_PORT}:80"
+    depends_on:
+      - api-gateway
+    networks:
+      - innowise-network
+    restart: unless-stopped
 
 volumes:
   auth-postgres-data:
