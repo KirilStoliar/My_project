@@ -34,7 +34,7 @@ export interface ApiResponse<T> {
     password: string;
     role: Role;
     name: string;
-    surename: string;
+    surname: string;
     email: string;
     birthDate: string;
   }

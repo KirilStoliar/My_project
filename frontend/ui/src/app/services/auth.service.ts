@@ -53,8 +53,12 @@ export class AuthService {
     });
   }
 
-  getAccessToken() { return this._access(); }
-  getRefreshToken() { return this._refresh(); }
+  getAccessToken() {
+    return this._access();
+  }
+  getRefreshToken() {
+    return this._refresh();
+  }
 
   setTokens(tokens: TokenResponse) {
     this._access.set(tokens.accessToken);

@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
-import { AuthService } from '../services/auth-service';
+import { AuthService } from '../services/auth.service';
 
 function redirectToAuth(returnUrl: string) {
   const router = inject(Router);
