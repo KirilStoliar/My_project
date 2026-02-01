@@ -232,7 +232,7 @@ public class OrderServiceImpl implements OrderService {
         fallback.setId(userId);
         fallback.setEmail("service@unavailable.com");
         fallback.setName("Service");
-        fallback.setSurname("Unavailable");
+        fallback.setSurename("Unavailable");
         fallback.setActive(false);
         return fallback;
     }

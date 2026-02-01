@@ -17,12 +17,12 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
 
     // NATIVE SQL QUERY WITH RETURNING
     @Query(value = """
-    INSERT INTO users (name, surname, birth_date, email, active, created_at, updated_at)
-    VALUES (:name, :surname, :birthDate, :email, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    INSERT INTO users (name, surename, birth_date, email, active, created_at, updated_at)
+    VALUES (:name, :surename, :birthDate, :email, true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
     RETURNING *
     """, nativeQuery = true)
     User createUser(@Param("name") String name,
-                    @Param("surname") String surname,
+                    @Param("surename") String surename,
                     @Param("birthDate") LocalDate birthDate,
                     @Param("email") String email);
 

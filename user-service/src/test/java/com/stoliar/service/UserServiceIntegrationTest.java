@@ -34,7 +34,7 @@ class UserServiceIntegrationTest extends AbstractIntegrationTest {
         // Given
         UserCreateDTO createDTO = new UserCreateDTO();
         createDTO.setName("Integration");
-        createDTO.setSurname("Test");
+        createDTO.setSurename("Test");
         createDTO.setBirthDate(LocalDate.of(1990, 1, 1));
         createDTO.setEmail("integration@test.com");
 
@@ -60,7 +60,7 @@ class UserServiceIntegrationTest extends AbstractIntegrationTest {
         // Given
         User user = new User();
         user.setName("Old");
-        user.setSurname("Name");
+        user.setSurename("Name");
         user.setBirthDate(LocalDate.of(1990, 1, 1));
         user.setEmail("old@test.com");
         user.setActive(true);
@@ -68,7 +68,7 @@ class UserServiceIntegrationTest extends AbstractIntegrationTest {
 
         UserDTO updateDTO = new UserDTO();
         updateDTO.setName("New");
-        updateDTO.setSurname("Name");
+        updateDTO.setSurename("Name");
         updateDTO.setBirthDate(LocalDate.of(1995, 5, 5));
         updateDTO.setEmail("new@test.com");
 

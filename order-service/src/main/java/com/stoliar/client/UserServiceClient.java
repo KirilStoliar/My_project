@@ -106,7 +106,7 @@ public class UserServiceClient {
         fallback.setId(-1L);
         fallback.setEmail("service@unavailable.com");
         fallback.setName("Service");
-        fallback.setSurname("Temporarily Unavailable");
+        fallback.setSurename("Temporarily Unavailable");
         fallback.setActive(false);
         return fallback;
     }
@@ -116,7 +116,7 @@ public class UserServiceClient {
         fallback.setId(-1L);
         fallback.setEmail(email);
         fallback.setName("Service");
-        fallback.setSurname("Temporarily Unavailable");
+        fallback.setSurename("Temporarily Unavailable");
         fallback.setActive(false);
         return fallback;
     }

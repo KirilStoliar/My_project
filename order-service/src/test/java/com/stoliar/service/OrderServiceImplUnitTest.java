@@ -107,7 +107,7 @@ class OrderServiceImplUnitTest {
         testUserInfo.setId(1L);
         testUserInfo.setEmail("test@example.com");
         testUserInfo.setName("Test");
-        testUserInfo.setSurname("User");
+        testUserInfo.setSurename("User");
         testUserInfo.setActive(true);
 
         testOrderResponseDto = new OrderResponseDto();
@@ -168,7 +168,7 @@ class OrderServiceImplUnitTest {
         notFoundUser.setId(-1L);
         notFoundUser.setEmail("notfound@example.com");
         notFoundUser.setName("Not Found");
-        notFoundUser.setSurname("User");
+        notFoundUser.setSurename("User");
         notFoundUser.setActive(true);
 
         OrderItemCreateDto orderItemDto = new OrderItemCreateDto();
@@ -212,7 +212,7 @@ class OrderServiceImplUnitTest {
         fallbackUser.setId(1L);
         fallbackUser.setEmail("service@unavailable.com");
         fallbackUser.setName("Service");
-        fallbackUser.setSurname("Unavailable");
+        fallbackUser.setSurename("Unavailable");
         fallbackUser.setActive(false);
         fallbackResponse.setUserInfo(fallbackUser);
 
@@ -235,7 +235,7 @@ class OrderServiceImplUnitTest {
         assertNotNull(result.getUserInfo());
         assertEquals("service@unavailable.com", result.getUserInfo().getEmail());
         assertEquals("Service", result.getUserInfo().getName());
-        assertEquals("Unavailable", result.getUserInfo().getSurname());
+        assertEquals("Unavailable", result.getUserInfo().getSurename());
         assertFalse(result.getUserInfo().getActive());
     }
 

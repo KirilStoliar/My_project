@@ -20,8 +20,8 @@ public class UserCredentialsRequest {
     @NotBlank(message = "Name is required")
     private String name;
 
-    @NotBlank(message = "Surname is required")
-    private String surname;
+    @NotBlank(message = "Surename is required")
+    private String surename;
 
     @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")

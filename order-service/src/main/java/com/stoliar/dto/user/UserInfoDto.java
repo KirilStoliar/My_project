@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class UserInfoDto {
     private Long id;
     private String name;
-    private String surname;
+    private String surename;
     private LocalDate birthDate;
     private String email;
     private Boolean active;

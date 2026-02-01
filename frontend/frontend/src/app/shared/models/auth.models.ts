@@ -16,7 +16,7 @@ export interface UserCredentials {
   password: string;
   role: 'ADMIN' | 'USER';
   name: string;
-  surname: string;
+  surename: string;
   birthDate: string;
 }
 

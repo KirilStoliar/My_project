@@ -51,7 +51,7 @@ class UserControllerIntegrationTest extends AbstractIntegrationTest {
 
         testUser = new User();
         testUser.setName("Integration");
-        testUser.setSurname("Test");
+        testUser.setSurename("Test");
         testUser.setBirthDate(LocalDate.of(1990, 1, 1));
         testUser.setEmail("integration.test@example.com");
         testUser.setActive(true);
@@ -63,7 +63,7 @@ class UserControllerIntegrationTest extends AbstractIntegrationTest {
         // Given
         UserCreateDTO createDTO = new UserCreateDTO();
         createDTO.setName("John");
-        createDTO.setSurname("Doe");
+        createDTO.setSurename("Doe");
         createDTO.setBirthDate(LocalDate.of(1990, 1, 1));
         createDTO.setEmail("john.doe@example.com");
 
@@ -105,7 +105,7 @@ class UserControllerIntegrationTest extends AbstractIntegrationTest {
         String updatedJson = """
             {
                 "name": "Updated",
-                "surname": "User",
+                "surename": "User",
                 "birthDate": "1990-01-01",
                 "email": "updated@example.com"
             }
@@ -138,7 +138,7 @@ class UserControllerIntegrationTest extends AbstractIntegrationTest {
         // Given
         UserCreateDTO createDTO = new UserCreateDTO();
         createDTO.setName("");
-        createDTO.setSurname("");
+        createDTO.setSurename("");
         createDTO.setBirthDate(LocalDate.now().plusDays(1)); // будущая дата рождения
         createDTO.setEmail("invalid-email"); // невалидный email
 
@@ -154,7 +154,7 @@ class UserControllerIntegrationTest extends AbstractIntegrationTest {
         // Given - дублирующий email существующего пользователя
         UserCreateDTO createDTO = new UserCreateDTO();
         createDTO.setName("Duplicate");
-        createDTO.setSurname("User");
+        createDTO.setSurename("User");
         createDTO.setBirthDate(LocalDate.of(1990, 1, 1));
         createDTO.setEmail("integration.test@example.com"); // дублирующий email
 
@@ -185,7 +185,7 @@ class UserControllerIntegrationTest extends AbstractIntegrationTest {
         // When & Then
         mockMvc.perform(get("/api/v1/users/filter")
                         .param("firstName", "Integration")
-                        .param("surname", "Test")
+                        .param("surename", "Test")
                         .param("page", "0")
                         .param("size", "10"))
                 .andExpect(status().isOk())

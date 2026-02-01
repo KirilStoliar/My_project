@@ -22,8 +22,8 @@ public class UserDTO implements Serializable {
     @NotBlank(message = "Name is required")
     private String name;
     
-    @NotBlank(message = "Surname is required")
-    private String surname;
+    @NotBlank(message = "Surename is required")
+    private String surename;
     
     @NotNull(message = "Birth date is required")
     @Past(message = "Birth date must be in the past")

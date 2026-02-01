@@ -38,7 +38,7 @@ public class UserServiceClient {
         // Создаем корректный JSON для user-service
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("name", request.getName());
-        requestBody.put("surname", request.getSurname());
+        requestBody.put("surename", request.getSurename());
         requestBody.put("email", request.getEmail());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         requestBody.put("birthDate", request.getBirthDate().format(formatter));

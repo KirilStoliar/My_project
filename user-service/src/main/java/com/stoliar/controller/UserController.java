@@ -91,13 +91,13 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse<Page<UserDTO>>> getUsersWithFilters(
             @Parameter(description = "First name filter") @RequestParam(required = false) String firstName,
-            @Parameter(description = "Surname filter") @RequestParam(required = false) String surname,
+            @Parameter(description = "Surename filter") @RequestParam(required = false) String surename,
             @Parameter(description = "Page number (default: 0)") @RequestParam(defaultValue = "0") int page,
             @Parameter(description = "Page size (default: 10)") @RequestParam(defaultValue = "10") int size) {
 
-        log.info("Filtering users - firstName: {}, surname: {}", firstName, surname);
+        log.info("Filtering users - firstName: {}, surename: {}", firstName, surename);
         Pageable pageable = PageRequest.of(page, size);
-        Page<UserDTO> users = userService.getUsersWithFilters(firstName, surname, pageable);
+        Page<UserDTO> users = userService.getUsersWithFilters(firstName, surename, pageable);
         return ResponseEntity.ok(ApiResponse.success(users, "Filtered users retrieved successfully"));
     }
 

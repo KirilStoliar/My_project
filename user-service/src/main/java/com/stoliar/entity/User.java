@@ -30,9 +30,9 @@ public class User extends AuditableEntity {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @NotBlank(message = "Surname is required")
-    @Column(name = "surname", nullable = false, length = 100)
-    private String surname;
+    @NotBlank(message = "Surename is required")
+    @Column(name = "surename", nullable = false, length = 100)
+    private String surename;
 
     @NotNull(message = "Birth date is required")
     @Past(message = "Birth date must be in the past")
