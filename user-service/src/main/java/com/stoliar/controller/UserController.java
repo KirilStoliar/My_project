@@ -198,7 +198,6 @@ public class UserController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "User ID retrieved successfully"),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "User not found")})
     @GetMapping("/email/{email}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ApiResponse<Long>> getUserIdByEmail(
             @Parameter(description = "User email", required = true)
             @PathVariable @Email String email) {
