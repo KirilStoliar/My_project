@@ -41,11 +41,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 List<SimpleGrantedAuthority> authorities = new ArrayList<>();
                 authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
-                
-                // Добавляем роли, если нужно
-//                if ("ADMIN".equals(role)) {
-//                    authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-//                }
 
                 // Устанавливаем userId как principal
                 var authentication = new UsernamePasswordAuthenticationToken(
