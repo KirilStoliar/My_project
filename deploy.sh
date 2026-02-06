@@ -32,7 +32,12 @@ kubectl get pods -n innowise -w
 kubectl exec order-db-0 -n innowise -- psql -U postgres -d order_service -c "\dt"
 kubectl exec user-db-0 -n innowise -- psql -U postgres -d user_service -c "\dt"
 kubectl exec auth-db-0 -n innowise -- psql -U postgres -d auth_service -c "\dt"
-kubectl exec payment-db-0 -n innowise -- psql -U postgres -d payment_service -c "\dt"
+
+kubectl exec -it payment-mongodb-ххх -n innowise -- mongosh
+use payment_service
+show collections
+db.payments.getIndexes()
+
 
 Создание туннеля:
 kubectl port-forward svc/api-gateway 8083:8083 -n innowise
@@ -105,14 +110,6 @@ helm upgrade --install tempo grafana/tempo `
   -n innowise `
   -f k8s/monitoring/tempo.yaml
 
-#Helm chart:
-#helm create otel-java-agent
-#helm template otel-java-agent ./otel-java-agent -n innowise > otel-agent-rendered.yaml
-#Удалить:
-#Remove-Item otel-java-agent/templates/deployment.yaml
-#Remove-Item otel-java-agent/templates/service.yaml
-#Remove-Item otel-java-agent/templates/ingress.yaml
-
 
 
 Grafana - Data Source:
@@ -131,3 +128,5 @@ Tempo: URL
        http://tempo.innowise.svc.cluster.local:3200
        Datasource: Loki
        Datasource: Prometheus
+kubectl exec -it payment-service-579dc489b7-qt98t -n innowise -- \
+  sh -c "jar tf /app/app.jar | grep DispatcherServlet"
