@@ -1,84 +1,97 @@
-import { Component, OnInit, inject, signal } from '@angular/core';  
-import { CommonModule } from '@angular/common';  
-import { Router, RouterLink } from '@angular/router';  
-import { FormsModule } from '@angular/forms';  
-import { UserService } from '../../../services/user.service';  
-import { AuthService } from '../../../services/auth.service';  
-import { User } from '../../../types/user.types';  
+import { Component, OnInit, effect, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { UserService } from '../../../services/user.service';
+import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../types/user.types';
 
-@Component({  
-  selector: 'app-users-list',  
-  standalone: true,  
-  imports: [CommonModule, FormsModule, RouterLink],  
-  templateUrl: './users-list.page.html',  
-  styleUrl: './users-list.page.css',  
-})  
-export class UsersListPage implements OnInit {  
-  readonly auth = inject(AuthService);  
-  readonly userService = inject(UserService);  
-  private router = inject(Router);  
+@Component({
+  selector: 'app-users-list',
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink],
+  templateUrl: './users-list.page.html',
+  styleUrl: './users-list.page.css',
+})
+export class UsersListPage implements OnInit {
+  readonly auth = inject(AuthService);
+  readonly userService = inject(UserService);
+  private router = inject(Router);
 
-  readonly loading = signal(false);  
-  readonly error = signal<string | null>(null);  
-  readonly users = signal<User[]>([]);  
-  readonly currentPage = signal(0);  
+  readonly loading = signal(false);
+  readonly error = signal<string | null>(null);
+  readonly users = signal<User[]>([]);
+  readonly currentPage = signal(0);
 
-  filterName = '';  
-  filterSurname = '';  
+  filterName = '';
+  filterSurname = '';
 
-  ngOnInit() {  
-    this.loadUsers();  
-  }  
+  constructor() {
+    effect(() => {
+      const total = this.userService.totalPages();
+      console.log(total);
+    });
+  }
 
-  loadUsers() {  
-    this.loading.set(true);  
-    this.error.set(null);  
+  ngOnInit() {
+    this.loadUsers();
+  }
 
-    const hasFilters = this.filterName || this.filterSurname;  
+  loadUsers() {
+    this.loading.set(true);
+    this.error.set(null);
 
-    const params = {  
-      page: this.currentPage(),  
-      size: 10,  
-      ...(this.filterName && { name: this.filterName }),  
-      ...(this.filterSurname && { surname: this.filterSurname }),  
-    };  
+    const hasFilters = this.filterName || this.filterSurname;
 
-    const request$ = hasFilters  
-      ? this.userService.getAllWithFilters(params)  
-      : this.userService.getAll({ page: params.page, size: params.size });  
+    const params = {
+      page: this.currentPage(),
+      size: 10,
+      ...(this.filterName && { name: this.filterName }),
+      ...(this.filterSurname && { surname: this.filterSurname }),
+    };
 
-    request$.subscribe({  
-      next: (res) => {  
-        this.users.set(res.data.content);  
-        this.loading.set(false);  
-      },  
-      error: (err) => {  
-        this.error.set('Failed to load users');  
-        this.loading.set(false);  
-        console.error(err);  
-      },  
-    });  
-  }  
+    const request$ = hasFilters
+      ? this.userService.getAllWithFilters(params)
+      : this.userService.getAll({ page: params.page, size: params.size });
 
-  applyFilters() {  
-    this.currentPage.set(0);  
-    this.loadUsers();  
-  }  
+    request$.subscribe({
+      next: (res) => {
+        this.users.set(res.data.content);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        this.error.set('Failed to load users');
+        this.loading.set(false);
+        console.error(err);
+      },
+    });
+  }
 
-  resetFilters() {  
-    this.filterName = '';  
-    this.filterSurname = '';  
-    this.currentPage.set(0);  
-    this.loadUsers();  
-  }  
+  applyFilters() {
+    this.currentPage.set(0);
+    this.loadUsers();
+  }
 
-  changePage(page: number) {  
-    this.currentPage.set(page);  
-    this.loadUsers();  
-  }  
+  resetFilters() {
+    this.filterName = '';
+    this.filterSurname = '';
+    this.currentPage.set(0);
+    this.loadUsers();
+  }
+
+  changePage(page: number) {
+    this.currentPage.set(page);
+    this.loadUsers();
+  }
 
   toggleStatus(user: User) {
-    if (!confirm(`Are you sure you want to ${user.active ? 'deactivate' : 'activate'} ${user.name} ${user.surname}?`)) {
+    if (
+      !confirm(
+        `Are you sure you want to ${user.active ? 'deactivate' : 'activate'} ${user.name} ${
+          user.surname
+        }?`
+      )
+    ) {
       return;
     }
 
@@ -108,5 +121,5 @@ export class UsersListPage implements OnInit {
     });
   }
 
-  addUser(){}
+  addUser() {}
 }

@@ -22,16 +22,16 @@ export class UserService {
   readonly totalElements = signal(0);
   readonly userId = signal<number | null>(null);
 
-  getAll(params?: PageRequest): Observable<PageResponse<User>> {
+  getAll(params?: PageRequest): Observable<any> {
     let httpParams = new HttpParams();
     if (params?.page !== undefined) httpParams = httpParams.set('page', params.page);
     if (params?.size !== undefined) httpParams = httpParams.set('size', params.size);
     if (params?.sort) httpParams = httpParams.set('sort', params.sort);
 
-    return this.http.get<PageResponse<User>>(this.apiUrl, { params: httpParams }).pipe(
+    return this.http.get<any>(this.apiUrl, { params: httpParams }).pipe(
       tap((res) => {
         this.users.set(res.data.content);
-        this.totalPages.set(res.totalPages);
+        this.totalPages.set(res.data.totalPages);
         this.totalElements.set(res.totalElements);
       })
     );
